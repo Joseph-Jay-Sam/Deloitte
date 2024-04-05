@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management Portal</title>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+    
+</head>
+<body>
+    <header>
+        <h1>Management Portal</h1>
+        <!-- Add any additional navigation or elements here -->
+    </header>
+    <div class="content">
+        <div class="button-container">
+            <button id="myBtn">Add Warehouse</button>
+            <button id="myBtn2">Add Inventory Item</button>
+        </div>
+        
+                <table class="table table-primary table-hover" id="main-table">
+                    <thead>
+                        <tr id="main-row">
+                            <th>ID</th>
+                            <th>Warehouse Address</th>
+                            <th>Warehouse Capacity</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list-view-body">
+
+                    </tbody>
+                </table>
+
+        <table id="sub-table-template" class="sub-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Warehouse ID</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+        
+        
+        <div id="create-warehouse-modal" class="modal-view" action="#" >
+            <!-- Modal content -->
+            <div class="create-warehouse-modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <div id="create-warehouse-modalContent">
+                <form id="create-warehouse-form">
+                    <div class="form-group">
+                        <label>Warehouse Address</label>
+                        <input id="new-warehouse-address" name="new-warehouse-address" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Warehouse Capacity</label>
+                        <input id="new-warehouse-capacity" name="new-warehouse-capacity" type="number" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="save-button" name="save-button" type="submit" value="Save" class="btn btn-primary"/>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+
+        <div id="create-inventory-modal" class="modal-view" action="#" >
+            <!-- Modal content -->
+            <div class="create-inventory-modal-content">
+              <span class="close" onclick="closeCreateInventoryModal()">&times;</span>
+              <div id="create-inventory-modalContent">
+                <form id="create-inventory-form">
+
+                    <div class="form-group">
+                        <label>Warehouse ID</label>
+                        <input id="new-inventory-warehouse" name="new-inventory-warehouse" type="text" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Item Name</label>
+                        <input id="new-inventory-name" name="new-inventory-name" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Item Quantity</label>
+                        <input id="new-inventory-quantity" name="new-inventory-quantity" type="number" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="save-button" name="save-button" type="submit" value="Save" class="btn btn-primary"/>
+                    </div>
+
+                </form>
+              </div>
+            </div>
+        </div>
+
+        <div id="update-warehouse-modal" class="modal-view" action="#" >
+            <!-- Modal content -->
+            <div class="update-warehouse-modal-content">
+              <span class="close" onclick="closeUpdateWarehouseModal()">&times;</span>
+              <div id="update-warehouse-modalContent">
+
+                
+                <form id="update-warehouse-form">
+
+                    <div class="form-group">
+                        <label>Warehouse ID</label>
+                        <input id="update-warehouse-id" name="update-warehouse-id" type="text" class="form-control" disabled/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Warehouse Address</label>
+                        <input id="update-warehouse-address" name="update-warehouse-address" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Warehouse Capacity</label>
+                        <input id="update-warehouse-capacity" name="update-warehouse-capacity" type="number" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="save-button" name="save-button" type="submit" value="Save" class="btn btn-primary"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="delete-button" name="delete-button" type="button" value="Delete" class="btn btn-primary" onclick="deleteWarehouse()"/>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+
+        <div id="update-inventory-modal" class="modal-view" action="#" >
+            <!-- Modal content -->
+            <div class="update-inventory-modal-content">
+              <span class="close" onclick="closeUpdateInventoryModal()">&times;</span>
+              <div id="update-inventory-modalContent">
+                
+                <form id="update-inventory-form">
+
+                    <div class="form-group">
+                        <label>Inventory ID</label>
+                        <input id="update-inventory-id" name="update-inventory-id" type="text" class="form-control" disabled/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Warehouse ID</label>
+                        <input id="update-inventory-warehouse" name="update-inventory-warehouse" type="text" class="form-control" disabled/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Item Name</label>
+                        <input id="update-inventory-name" name="update-inventory-name" type="text" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Item Quantity</label>
+                        <input id="update-inventory-quantity" name="update-inventory-quantity" type="number" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="save-button" name="save-button" type="submit" value="Save" class="btn btn-primary"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="delete-button" name="delete-button" type="button" value="Delete" class="btn btn-primary" onclick="deleteInventory()"/>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-socials">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="footer-contacts">
+                <p>Contact Us:</p>
+                <p>Email: info@example.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+                <p>Address: 1234 Street, City, Country</p>
+            </div>
+        </footer>
+</body>
+</html>

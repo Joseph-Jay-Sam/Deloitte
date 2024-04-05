@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .sub-table {
+            display: none;
+        }
+        .sub-table-visible {
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <table id="main-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Warehouse Address</th>
+                <th>Warehouse Capacity</th>
+            </tr>
+        </thead>
+        <tbody id="main-table-body">
+            <tr>
+                <td>1</td>
+                <td>Warehouse 1 Address</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Warehouse 2 Address</td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Warehouse 3 Address</td>
+                <td>300</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="sub-table-template" class="sub-table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data for the sub-table will be dynamically populated -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var mainTable = document.getElementById("main-table");
+            var subTableTemplate = document.getElementById("sub-table-template");
+
+            mainTable.addEventListener("click", function(event) {
+                var target = event.target;
+                if (target.tagName === "TD") {
+                    var row = target.parentElement;
+                    var subTable = row.nextElementSibling;
+                    if (subTable && subTable.classList.contains("sub-table")) {
+                        // Toggle visibility of existing sub-table
+                        subTable.classList.toggle("sub-table-visible");
+                    } else {
+                        // Create a new sub-table if it doesn't exist
+                        subTable = subTableTemplate.cloneNode(true);
+                        subTable.classList.add("sub-table");
+                        subTable.classList.add("sub-table-visible");
+                        row.after(subTable);
+                        populateSubTable(subTable, row);
+                    }
+                }
+            });
+
+            function populateSubTable(subTable, row) {
+                // Example: Populate sub-table with data specific to the clicked row
+                var data = {
+                    1: [{ productName: "Product A", quantity: 10 }, { productName: "Product B", quantity: 20 }],
+                    2: [{ productName: "Product X", quantity: 15 }, { productName: "Product Y", quantity: 25 }],
+                    3: [{ productName: "Product P", quantity: 5 }, { productName: "Product Q", quantity: 15 }]
+                };
+                var rowData = data[row.cells[0].innerText];
+                var tbody = subTable.querySelector("tbody");
+                tbody.innerHTML = ""; // Clear existing rows
+                rowData.forEach(function(item) {
+                    var row = document.createElement("tr");
+                    row.innerHTML = `<td>${item.productName}</td><td>${item.quantity}</td>`;
+                    tbody.appendChild(row);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

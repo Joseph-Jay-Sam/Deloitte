@@ -1,0 +1,260 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+.content {
+  padding: 20px;
+}
+
+/* Button styles */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Adjust spacing between buttons */
+  margin-right: 20px; /* Adjust spacing between buttons */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Adjust button width if necessary */
+#myBtn {
+  width: 150px;
+  position : relative;
+  left : 450px;
+}
+
+#myBtn2 {
+  width: 180px; /* Example width */
+  position: relative;
+  left : 1450px;
+}
+
+.modal-view {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+.create-warehouse-modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%; /* Could be more or less, depending on screen size */
+  }
+
+    /* Modal Content/Box */
+.update-warehouse-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+/* Modal Content/Box */
+.update-inventory-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+.create-inventory-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%; /* Could be more or less, depending on screen size */
+}
+
+  /* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Style for form container */
+#update-warehouse-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Style for form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for form inputs */
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Style for submit button */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style for delete button */
+#delete-button {
+  background-color: #dc3545;
+}
+
+#delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Container styles */
+.table-container {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px; /* Adjust spacing between tables */
+    margin-bottom: 20px; /* Add margin bottom for spacing */
+}
+
+/* Style for main table */
+#main-table {
+  width: 45%; /* Adjust the width as needed */
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  float: left;
+  margin-right: 20px; /* Adjust the spacing between tables */
+}
+
+#main-table th,
+#main-table td {
+  padding: 6px; /* Adjust padding as needed */
+  text-align: left;
+}
+
+#main-table th {
+  background-color: #f0f0f0; /* Soft gray for header */
+  color: #333; /* Dark text for header */
+}
+
+#main-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Soft gray for even rows */
+}
+
+#main-table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* White for odd rows */
+}
+
+/* Style for sub table */
+.sub-table {
+  width: 45%; /* Adjust the width as needed */
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  float: left;
+}
+
+.sub-table th,
+.sub-table td {
+  padding: 6px; /* Adjust padding as needed */
+  text-align: left;
+}
+
+.sub-table th {
+  background-color: #f0f0f0; /* Soft gray for header */
+  color: #333; /* Dark text for header */
+}
+
+.sub-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Soft gray for even rows */
+}
+
+.sub-table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* White for odd rows */
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Footer styles */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-socials {
+  margin-bottom: 10px; /* Adjust spacing between social icons and contacts */
+}
+
+.social-icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icon i {
+  font-size: 24px; /* Adjust icon size */
+  color: #fff; /* Adjust icon color */
+}
+
+.footer-contacts {
+  font-size: 14px;
+}
+
+.footer-contacts p {
+  margin: 5px 0;
+}
